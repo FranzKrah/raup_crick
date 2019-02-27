@@ -1,15 +1,21 @@
 ## This code is part of the study:
-## Assembly processes linked to organism size in a dead-wood experiment
+## Assembly processes linked to organism size in a dead-wood experiment (unpublished)
 ## ©Franz-Sebastian Krah
-## 10 - 24 - 2018
+## 02 - 27 - 2019
 
-## Parallelized version of the Raup-Crick algorithm (Stegen et al. 2013)
-# However, Stegen loops over each pairwise community combination.
-# Here we randomize the full community matrix and compute Bray-Curtis for the 
-# full matrix and then conduct subsequent Raup-Crick calculations as in Stegen.
-# This makes computations much faster. Further here implemented as multi-core version.
-  
-  
+#' @title raup_crick_abu_par
+#' @param com community matrix
+#' @param reps number of bootstraps
+#' @param ncore number of cores (serial: ncore = 1; parallel > 1)
+#' @param classic_metric standardizes the metric to range from -1 to 1
+#' @param split_ties dds half of the number of null observations that are equal to the observed number of shared species to the calculation- this is highly recommended
+#' @details Parallelized version of the Raup-Crick algorithm (Stegen et al. 2013).
+#' However, Stegen loops over each pairwise community combination.
+#' Here we randomize the full community matrix and compute Bray-Curtis for the 
+#' full matrix and then conduct subsequent Raup-Crick calculations as in Stegen.
+#' This makes computations much faster. Further here implemented as multi-core version.
+#' @author Franz-Sebastian Krah
+
 raup_crick_abu_par <- function(com, reps, ncore, classic_metric=FALSE, split_ties=TRUE){
   
 
