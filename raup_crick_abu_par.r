@@ -36,7 +36,6 @@ raup_crick_abu_par <- function(com, reps, ncore, classic_metric=FALSE, split_tie
       null.dist <- com*0
       
       for(i in 1:nrow(com)){
-        print(i)
 
         com.pa <- (com>0)*1
         gamma<-ncol(com)
@@ -58,6 +57,7 @@ raup_crick_abu_par <- function(com, reps, ncore, classic_metric=FALSE, split_tie
       }
       as.matrix(vegdist(null.dist, "bray"))
     }
+  stopCluster(cl)
   
   ## Calculate beta-diversity for obs metacommunity
   bray.obs <- as.matrix(vegdist(com, "bray"))
