@@ -1,20 +1,20 @@
 ## This code is part of the study:
 ## Stochastic dispersal rather than deterministic selection explains the spatio-temporal distribution of soil bacteria in a temperate grassland
-## https://www.frontiersin.org/articles/10.3389/fmicb.2020.01391/abstract
+## doi: 10.3389/fmicb.2020.01391
 ## ©Franz-Sebastian Krah
 ## 02 - 27 - 2019
 
 #' @title raup_crick_abu_par
-#' @param com community matrix
+#' @param com community matrix (spXsite)
 #' @param reps number of bootstraps
 #' @param ncore number of cores (serial: ncore = 1; parallel > 1)
 #' @param classic_metric standardizes the metric to range from -1 to 1
-#' @param split_ties dds half of the number of null observations that are equal to the observed number of shared species to the calculation- this is highly recommended
-#' @details Parallelized version of the Raup-Crick algorithm (Stegen et al. 2013).
+#' @param split_ties adds half of the number of null observations that are equal to the observed number of shared species to the calculation- this is highly recommended
+#' @details Parallelized version of the Raup-Crick algorithm for "abundance" data (Stegen et al. 2013).
 #' Previous code loops over each pairwise community combination;
 #' here we randomize the full community matrix and compute Bray-Curtis for the 
 #' full matrix and then conduct subsequent Raup-Crick calculations as in Stegen.
-#' This makes computations much faster. Further here implemented as multi-core version.
+#' This increaes computational speed. Further here implemented as multi-core version.
 #' @author Franz-Sebastian Krah
 
 raup_crick_abu_par <- function(com, reps, ncore, classic_metric=FALSE, split_ties=TRUE){
