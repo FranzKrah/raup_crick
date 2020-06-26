@@ -15,6 +15,7 @@
 #' here we randomize the full community matrix and compute Bray-Curtis for the 
 #' full matrix and then conduct subsequent Raup-Crick calculations as in Stegen.
 #' This increaes computational speed. Further here implemented as multi-core version.
+#' The code is acurate and fast (see paper, supplement section D)
 #' @author Franz-Sebastian Krah
 
 raup_crick_abu_par <- function(com, reps, ncore, classic_metric=FALSE, split_ties=TRUE){
