@@ -1,5 +1,6 @@
 ## This code is part of the study:
-## Assembly processes linked to organism size in a dead-wood experiment (unpublished)
+## Stochastic dispersal rather than deterministic selection explains the spatio-temporal distribution of soil bacteria in a temperate grassland
+## https://www.frontiersin.org/articles/10.3389/fmicb.2020.01391/abstract
 ## ©Franz-Sebastian Krah
 ## 02 - 27 - 2019
 
@@ -10,8 +11,8 @@
 #' @param classic_metric standardizes the metric to range from -1 to 1
 #' @param split_ties dds half of the number of null observations that are equal to the observed number of shared species to the calculation- this is highly recommended
 #' @details Parallelized version of the Raup-Crick algorithm (Stegen et al. 2013).
-#' However, Stegen loops over each pairwise community combination.
-#' Here we randomize the full community matrix and compute Bray-Curtis for the 
+#' Previous code loops over each pairwise community combination;
+#' here we randomize the full community matrix and compute Bray-Curtis for the 
 #' full matrix and then conduct subsequent Raup-Crick calculations as in Stegen.
 #' This makes computations much faster. Further here implemented as multi-core version.
 #' @author Franz-Sebastian Krah
